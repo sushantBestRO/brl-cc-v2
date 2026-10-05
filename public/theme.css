@@ -1,0 +1,199 @@
+/* =====================================================================
+   BRL Command Center — house design language (from the 2026 corporate
+   profile and hiring collateral): white paper, hairline rules, brand red
+   #C8102E, heavy black uppercase headlines with the last line in red,
+   small letter-spaced red kickers, numbered rows 01/02/03, big red stats.
+   Every class the app already uses is restyled here; no markup changes.
+   ===================================================================== */
+:root{
+ --red:#C8102E; --red-d:#A00D25; --red-soft:#FCE8EB; --red-tint:#FDF3F4;
+ --ink:#141414; --ink-2:#2B2B2B; --grey:#5F5F5F; --grey-2:#8A8A8A;
+ --line:#E6E6E6; --line-2:#D4D4D4; --paper:#FFFFFF; --page:#F6F6F6; --card:#FFFFFF;
+ /* legacy names the app and the BMP module reference — remapped to the house palette */
+ --navy:#C8102E; --navy2:#A00D25; --amber:#FFFFFF; --amber-d:#A00D25; --green:#1E7A4C; --slate:#5F5F5F;
+ --hot:#FFE7CF; --won:#DDF0E5; --dead:#EDEDED; --bad:#FCE8EB; --fresh:#E3F0E8; --fup:#FFF1D6; --cold:#ECEAF3; --nurt:#F2E6EC;
+ --kick:11px; --track:.28em;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',Arial,Helvetica,sans-serif;background:var(--page);color:var(--ink);font-size:13.5px;line-height:1.45}
+button{font-family:inherit;cursor:pointer}
+a{color:var(--red)}
+.app{display:grid;grid-template-columns:232px 1fr;min-height:100vh}
+
+/* ---- kicker (the red letter-spaced label used everywhere in the collateral) ---- */
+.kick,.card h3,.q h4,.frow label{font-family:'Inter';font-weight:700;letter-spacing:var(--track);text-transform:uppercase;font-size:var(--kick)}
+
+/* ---- rail ---- */
+.rail{background:var(--paper);color:var(--ink);padding:0;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;border-right:1px solid var(--line)}
+.brand{padding:18px 18px 14px;border-bottom:1px solid var(--line)}
+.brand h1{font-size:0;line-height:0;height:34px;background:url(/brand.png) no-repeat left center/auto 34px}
+.brand h1 span{display:none}
+.brand p{font-size:10px;color:var(--red);margin-top:10px;letter-spacing:var(--track);text-transform:uppercase;font-weight:700}
+.nav{margin-top:10px;flex:1;overflow:auto;counter-reset:navn}
+.nav button{display:flex;align-items:center;gap:10px;width:100%;background:none;border:0;color:var(--ink-2);padding:10px 16px 10px 14px;font-size:12.5px;font-weight:600;border-left:3px solid transparent;text-align:left;letter-spacing:.01em;counter-increment:navn}
+.nav button::before{content:counter(navn,decimal-leading-zero);font-weight:800;font-size:11px;color:var(--red);letter-spacing:.06em;min-width:22px}
+.nav button.on{color:var(--red);border-left-color:var(--red);background:var(--red-tint)}
+.nav button:hover{color:var(--red)}
+.nav .ic{display:none}
+.nav .cnt{margin-left:auto;background:var(--red);color:#fff;font-weight:800;font-size:10px;border-radius:2px;padding:2px 6px;letter-spacing:.02em}
+.railfoot{padding:12px 16px;font-size:10px;color:var(--grey-2);border-top:1px solid var(--line);letter-spacing:.04em;line-height:1.7}
+.railfoot a{color:var(--red)!important;text-decoration:none!important;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+
+/* ---- main / topbar ---- */
+.main{padding:0 0 60px}
+.topbar{background:var(--paper);border-bottom:1px solid var(--line);padding:14px 28px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:5}
+.topbar .day{font-weight:900;font-size:20px;letter-spacing:-.01em;text-transform:uppercase;color:var(--ink)}
+.badge{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:4px 9px;border-radius:2px}
+.badge.sat{background:var(--red);color:#fff}
+.badge.lunch{background:#fff;color:var(--ink);border:1px solid var(--ink)}
+.topstats{margin-left:auto;display:flex;gap:0}
+.topstats div{text-align:left;padding:0 18px;border-left:1px solid var(--line)}
+.topstats div:first-child{border-left:0}
+.topstats b{font-weight:900;font-size:22px;display:block;line-height:1;color:var(--red);letter-spacing:-.02em}
+.topstats span{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);font-weight:700}
+.wrap{padding:26px 28px;max-width:1280px}
+h2.sec{font-weight:900;font-size:22px;letter-spacing:-.015em;text-transform:uppercase;color:var(--ink);margin:26px 0 12px;padding-bottom:10px;border-bottom:2px solid var(--red);line-height:1.1}
+h2.sec small{font-weight:500;font-size:11.5px;color:var(--grey);letter-spacing:.01em;text-transform:none;margin-left:12px;display:inline-block;vertical-align:middle;max-width:62%;white-space:normal;line-height:1.4}
+
+/* ---- highway meter ---- */
+.road{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--red);border-radius:0;padding:20px 24px 22px;color:var(--ink);position:relative;overflow:hidden}
+.road h3{font-weight:700;font-size:var(--kick);letter-spacing:var(--track);color:var(--red);text-transform:uppercase}
+.road .big{font-weight:900;font-size:46px;line-height:1;margin:6px 0 14px;letter-spacing:-.03em;color:var(--ink)}
+.road .big em{font-style:normal;color:var(--red)}
+.lane{height:14px;background:#EFEFEF;border-radius:0;position:relative;border:0}
+.lane .fill{position:absolute;inset:0;width:0%;background:var(--red);border-radius:0;transition:width .6s;box-shadow:none}
+.lane .dash{position:absolute;top:50%;left:0;right:0;height:0;border-top:2px dashed rgba(255,255,255,.7);transform:translateY(-50%);pointer-events:none}
+.lane .truck{position:absolute;top:-16px;font-size:18px;transition:left .6s;transform:translateX(-50%)}
+.roadrow{display:flex;gap:0;margin-top:18px;flex-wrap:wrap;border-top:1px solid var(--line)}
+.mini{flex:1;min-width:120px;background:none;border:0;border-left:1px solid var(--line);border-radius:0;padding:12px 14px 6px}
+.mini:first-child{border-left:0;padding-left:0}
+.mini b{font-weight:900;font-size:24px;display:block;line-height:1;color:var(--red);letter-spacing:-.02em}
+.mini span{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);font-weight:700}
+.mini .gap{font-size:10px;font-weight:800;letter-spacing:0}
+.gap.ok{color:var(--green)}.gap.no{color:var(--red)}
+
+/* ---- queues ---- */
+.queues{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:16px}
+.q{background:var(--card);border:1px solid var(--line);border-radius:0;overflow:hidden}
+.q h4{color:var(--red);padding:11px 14px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;background:#fff}
+.q h4 span{color:var(--ink);font-weight:900;font-size:13px;letter-spacing:0}
+.q.due h4{border-top:3px solid #C48A2E}.q.retry h4{border-top:3px solid #6B6B8A}.q.fresh h4{border-top:3px solid var(--green)}.q.over h4{border-top:3px solid var(--red)}
+.q ul{list-style:none;max-height:250px;overflow:auto}
+.q li{padding:9px 14px;border-bottom:1px solid var(--line);font-size:12.5px;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.q li:last-child{border-bottom:0}
+.q li .co{font-weight:700;cursor:pointer}
+.q li .co:hover{color:var(--red)}
+.q li small{color:var(--grey);display:block;font-size:11px}
+.q .empty{padding:14px;color:var(--grey);font-size:12px}
+
+/* ---- forms, buttons ---- */
+.toolrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+input,select,textarea{font-family:'Inter';font-size:12.5px;padding:8px 10px;border:1px solid var(--line-2);border-radius:0;background:#fff;color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--red);outline-offset:-1px}
+.btn{border:0;border-radius:0;padding:9px 14px;font-weight:800;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:var(--red);color:#fff}
+.btn:hover{background:var(--red-d)}
+.btn.amber,.btn.navy{background:var(--red);color:#fff}
+.btn.amber:hover,.btn.navy:hover{background:var(--red-d)}
+.btn.ghost{background:#fff;border:1px solid var(--ink);color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:#fff}
+.btn.sm{padding:6px 10px;font-size:10px}
+.pill{display:inline-block;background:#fff;border-radius:0;padding:4px 10px;font-size:10.5px;font-weight:700;color:var(--ink);margin:2px 4px 2px 0;border:1px solid var(--line-2);cursor:pointer;letter-spacing:.04em}
+.pill.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* ---- tables ---- */
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:0;overflow:hidden}
+th{font-family:'Inter';font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;background:#fff;color:var(--ink);padding:10px 10px;text-align:left;border-bottom:2px solid var(--red)}
+td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr.lead{cursor:pointer}
+tr.lead:hover td{background:var(--red-tint)}
+.st{font-size:9.5px;font-weight:800;letter-spacing:.08em;padding:3px 7px;border-radius:0;white-space:nowrap;text-transform:uppercase}
+.st.HOT{background:var(--hot);color:#8A4B00}.st.OPEN{background:#EEF1F5;color:var(--grey)}
+.st.FRESH{background:var(--fresh);color:var(--green)}.st.DEAD{background:var(--dead);color:#777}
+.st.BADDATA{background:var(--bad);color:var(--red)}.st.PARKED{background:var(--dead);color:#777}
+.st.FOLLOWUP{background:var(--fup);color:#8A6A00}.st.WON{background:var(--won);color:var(--green)}
+.st.COLD{background:var(--cold);color:#4B4B6B}.st.NURTURE{background:var(--nurt);color:#6B4E8E}
+
+/* ---- drawer ---- */
+.drawer{position:fixed;top:0;right:-580px;width:560px;max-width:96vw;height:100vh;background:#fff;box-shadow:-12px 0 40px rgba(0,0,0,.18);transition:right .25s;z-index:20;display:flex;flex-direction:column;border-left:1px solid var(--line)}
+.drawer.open{right:0}
+.dhead{background:#fff;color:var(--ink);padding:22px 22px 16px;border-bottom:2px solid var(--red)}
+.dhead h3{font-weight:900;font-size:22px;letter-spacing:-.015em;text-transform:uppercase;line-height:1.1;padding-right:30px}
+.dhead p{color:var(--grey);margin-top:6px;font-weight:500;font-size:12px}
+.dhead .x{position:absolute;top:14px;right:16px;background:none;border:0;color:var(--ink);font-size:20px}
+.dbody{padding:18px 22px;overflow:auto;flex:1}
+.frow{margin-bottom:14px}
+.frow label{display:block;color:var(--red);margin-bottom:6px}
+.frow label small{text-transform:none;letter-spacing:0;font-weight:500;color:var(--grey)}
+.frow select,.frow input,.frow textarea{width:100%}
+.actbar{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:6px 0 16px}
+.act{border-radius:0;border:1px solid var(--ink);background:#fff;padding:12px 6px;text-align:center;font-weight:800;font-size:15px;color:var(--ink)}
+.act span{display:block;font-size:9px;font-weight:700;color:var(--grey);letter-spacing:.18em;text-transform:uppercase;margin-top:3px}
+.act.call{border-color:var(--ink)}
+.act.mail{border-color:var(--ink)}
+.act.wa{border-color:var(--ink)}
+.act:hover{background:var(--ink);color:#fff}
+.act:hover span{color:#ddd}
+.hist{background:var(--page);border:1px solid var(--line);border-radius:0;padding:10px 12px;font-size:12px;color:var(--ink-2);max-height:120px;overflow:auto}
+.savedtick{font-size:11px;color:var(--green);font-weight:700}
+
+/* ---- pipeline ---- */
+.funnel{max-width:760px;margin:6px auto 0}
+.fstage{margin:0 auto 8px;color:#fff;border-radius:0;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;min-width:220px;transition:transform .15s}
+.fstage:hover{transform:scale(1.012)}
+.fstage b{font-weight:900;font-size:24px;letter-spacing:-.02em}
+.fstage span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:800}
+.fstage small{font-size:10.5px;opacity:.85;display:block;font-weight:500;text-transform:none;letter-spacing:0}
+.fconv{text-align:center;font-size:10px;color:var(--grey);margin:-2px 0 8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.leak{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.leak .card{text-align:center;cursor:pointer}
+.leak b{font-weight:900;font-size:26px;display:block;color:var(--red);letter-spacing:-.02em}
+
+/* ---- cards, import, misc ---- */
+.drop{border:1px dashed var(--ink);border-radius:0;padding:34px;text-align:center;background:#fff;color:var(--grey)}
+.drop.hover{border-color:var(--red);background:var(--red-tint)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:0;padding:18px}
+.card h3{color:var(--red);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.note{font-size:11.5px;color:var(--grey);line-height:1.55}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 20px;border-radius:0;font-size:12px;font-weight:700;letter-spacing:.04em;box-shadow:0 8px 24px rgba(0,0,0,.25);z-index:50;display:none}
+
+/* ---- BMP module overrides (keeps the house look inside the sales tab) ---- */
+.bmp-tabs button{border-radius:0;border:1px solid var(--line-2);color:var(--ink);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:800;padding:8px 12px}
+.bmp-tabs button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.bmp-kpi{border-radius:0;border-top:2px solid var(--red)}
+.bmp-kpi b{font-family:'Inter';font-weight:900;font-size:28px;letter-spacing:-.03em;color:var(--red)}
+.bmp-kpi span{letter-spacing:.2em;color:var(--ink)}
+.bmp-kpi.teal{border-top-color:var(--green)}.bmp-kpi.amber{border-top-color:#C48A2E}.bmp-kpi.red{border-top-color:var(--ink)}
+.bmp-score{font-family:'Inter';font-weight:900;letter-spacing:-.03em}
+.bmp-rule{background:var(--red-tint);border-left:3px solid var(--red);border-radius:0}
+.bmp-rule b{color:var(--red);text-transform:uppercase;letter-spacing:.08em;font-size:10.5px}
+.bmp-em{border:1px solid var(--ink);border-radius:0}
+.bmp-deckpage{border-radius:0}
+.bmp-deckpage .k{font-family:'Inter';letter-spacing:.22em}
+.bmp-chip{border-radius:0;font-weight:600}
+.bmp-tag{border-radius:0}
+.bmp-tag.on{background:var(--ink);border-color:var(--ink)}
+.bmp-script{border-radius:0}
+
+/* ---- numbered rows (the collateral's 01 / 02 / 03 motif, for action lists) ---- */
+.nrow{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.nrow .n{font-weight:900;color:var(--red);font-size:16px;letter-spacing:-.02em}
+
+@media(max-width:880px){
+ .app{grid-template-columns:1fr}
+ .rail{position:fixed;bottom:0;top:auto;height:auto;width:100%;flex-direction:row;padding:0;z-index:30;border-right:0;border-top:1px solid var(--line)}
+ .brand,.railfoot{display:none}
+ .nav{display:flex;margin:0;width:100%;overflow-x:auto}
+ .nav button{flex-direction:column;gap:2px;padding:9px 6px;font-size:9.5px;border-left:0;border-top:3px solid transparent;justify-content:center;align-items:center;min-width:64px}
+ .nav button::before{display:none}
+ .nav .ic{display:block;font-size:16px}
+ .nav button.on{border-top-color:var(--red);background:none}
+ .nav .cnt{display:none}
+ .main{padding-bottom:80px}
+ .wrap{padding:18px 16px}
+ th{top:0}
+ .grid2{grid-template-columns:1fr}
+ .topstats{display:none}
+ .topbar .day{font-size:16px}
+}
